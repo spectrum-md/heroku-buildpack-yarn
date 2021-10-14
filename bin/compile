@@ -54,14 +54,14 @@ source $BP_DIR/export
 
 cd $BUILD_DIR
 
-mkdir -p $CACHE_DIR
+mkdir -p $CACHE_DIR/node_modules
 mkdir -p $BUILD_DIR/node_modules
 
-mv $CACHE_DIR/* node_modules
+mv $CACHE_DIR/node_modules/* ./node_modules/
 
 yarn install | output
 yarn autoclean | output
 
-header "Populating cache"
+header "Populating node_modules cache"
 
-cp -r node_modules/* $CACHE_DIR/
+cp -r node_modules/* $CACHE_DIR/node_modules/
