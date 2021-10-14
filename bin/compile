@@ -50,10 +50,9 @@ if [ -w "$BP_DIR" ]; then
   echo "export PATH=\"$PATH:$BUILD_DIR/.heroku/yarn/bin\"" >> "$BP_DIR/export"
 fi
 
-source $BP_DIR/export
+cd $BUILD_DIR
 
-which yarn | output
-
-which node | output
+echo "TODO: Caching" | output
 
 yarn install | output
+yarn autoclean | output
