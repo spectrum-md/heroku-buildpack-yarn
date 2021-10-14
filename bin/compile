@@ -62,8 +62,7 @@ if [ -f $CACHE_DIR/node_modules.tar ]; then
   tar -xf $CACHE_DIR/node_modules.tar -C $BUILD_DIR
 fi
 
-yarn install | output
-yarn autoclean | output
+yarn install --production | output
 
 header "Updating node_modules cache"
 
