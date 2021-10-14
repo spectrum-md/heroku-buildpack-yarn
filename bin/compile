@@ -54,20 +54,17 @@ source $BP_DIR/export
 
 cd $BUILD_DIR
 
-mkdir -p $CACHE_DIR/node_modules
-mkdir -p $BUILD_DIR/node_modules
+mkdir -p $CACHE_DIR
 
-ls -la $CACHE_DIR | output
-ls -la $CACHE_DIR/node_modules | output
+if [ -f $CACHE_DIR/node_modules.tar ]; then
+  header "Populating node_modules from cache"
 
-mv $CACHE_DIR/node_modules/* $BUILD_DIR/node_modules/
+  tar -xf $CACHE_DIR/node_modules.tar -C $BUILD_DIR
+fi
 
 yarn install | output
 yarn autoclean | output
 
 header "Updating node_modules cache"
 
-cp -r $BUILD_DIR/node_modules/* $CACHE_DIR/node_modules/
-
-ls -la $BUILD_DIR/node_modules | output
-ls -la $CACHE_DIR/node_modules | output
+tar -cf $CACHE_DIR/node_modules.tar $BUILD_DIR/node_modules
