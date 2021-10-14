@@ -54,7 +54,14 @@ source $BP_DIR/export
 
 cd $BUILD_DIR
 
-echo "TODO: Caching" | output
+mkdir -p $CACHE_DIR
+mkdir -p $BUILD_DIR/node_modules
+
+mv $CACHE_DIR/* node_modules
 
 yarn install | output
 yarn autoclean | output
+
+header "Populating cache"
+
+cp -r node_modules/* $CACHE_DIR/
