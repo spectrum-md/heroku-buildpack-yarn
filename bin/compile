@@ -62,7 +62,7 @@ if [ -f $CACHE_DIR/node_modules.tar ]; then
   ls -la ./ | output
   ls -la ./node_modules/ | output
 
-  tar -xf $CACHE_DIR/node_modules.tar -C $BUILD_DIR
+  tar -xf $CACHE_DIR/node_modules.tar -C $BUILD_DIR | output
 
   ls -la ./ | output
   ls -la ./node_modules/ | output
