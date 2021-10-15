@@ -70,10 +70,12 @@ if [ -f $CACHE_DIR/node_modules.tar ]; then
   ls -la ./node_modules/ | output
 fi
 
+exit 1
+
 yarn install --production | output
 
 header "Updating node_modules cache"
 
 tar -cf $CACHE_DIR/node_modules.tar $BUILD_DIR/node_modules
 
-exit 1
+
