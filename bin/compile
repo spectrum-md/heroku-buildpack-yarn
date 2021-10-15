@@ -59,7 +59,13 @@ mkdir -p $CACHE_DIR
 if [ -f $CACHE_DIR/node_modules.tar ]; then
   header "Populating node_modules from cache"
 
+  ls -la ./ | output
+  ls -la ./node_modules/ | output
+
   tar -xf $CACHE_DIR/node_modules.tar -C $BUILD_DIR
+
+  ls -la ./ | output
+  ls -la ./node_modules/ | output
 fi
 
 yarn install --production | output
