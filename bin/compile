@@ -64,20 +64,16 @@ if [ -f $CACHE_DIR/node_modules.tar ]; then
 
   echo "tar -xvf $CACHE_DIR/node_modules.tar -C $BUILD_DIR/" | output
 
-  tar --help | output
-
   tar -xf $CACHE_DIR/node_modules.tar -C "$BUILD_DIR/" | output
 
   ls -la ./ | output
   ls -la ./node_modules/ | output
 fi
 
-exit 1
-
 yarn install --production | output
 
 header "Updating node_modules cache"
 
-tar -cf $CACHE_DIR/node_modules.tar $BUILD_DIR/node_modules
+tar -cf $CACHE_DIR/node_modules.tar -C $BUILD_DIR node_modules
 
 
